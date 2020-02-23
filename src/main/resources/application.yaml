@@ -1,0 +1,14 @@
+app:
+  consumer:
+    auto-offset-reset: earliest
+    bootstrap-servers: localhost:9092
+    group-id: ws-consumer-group
+    topics: word-count-output
+  streams:
+    application-id: word-count-streams
+    auto-offset-reset: earliest
+    bootstrap-servers: localhost:9092
+    commit-interval-ms: 500
+    input-topics: word-count-input
+    output-topics: word-count-output
+  websocket-path: /word-count-output

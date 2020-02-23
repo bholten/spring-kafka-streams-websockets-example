@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+    id 'groovy'
+}
+
+group 'com.github.bholten.kafka.example'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.11
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter', version: "$springBootVersion"
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-integration', version: "$springBootVersion"
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-webflux', version: "$springBootVersion"
+
+    implementation group: 'org.apache.kafka', name: 'kafka-streams', version: "$kafkaStreamsVersion"
+    implementation group: 'io.projectreactor.kafka', name: 'reactor-kafka', version: "$reactorKafkaVersion"
+
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: "$springBootVersion"
+    testCompile group: 'org.springframework.kafka', name: 'spring-kafka-test', version: "$springEmbeddedKafkaVersion"
+
+    testCompile group: 'org.spockframework', name: 'spock-core', version: "$spockVersion"
+    testCompile group: 'org.spockframework', name: 'spock-spring', version: "$spockVersion"
+    testCompile group: 'org.codehaus.groovy', name: 'groovy-all', version: "$groovyVersion"
+}
