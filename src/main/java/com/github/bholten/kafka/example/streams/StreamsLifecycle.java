@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-@Configuration
+@Component
 public class StreamsLifecycle {
     private static final Logger log = LoggerFactory.getLogger(StreamsLifecycle.class);
     private final WordCountStream wordCountStream;
