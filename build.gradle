@@ -21,10 +21,11 @@ dependencies {
     implementation group: 'org.apache.kafka', name: 'kafka-streams', version: "$kafkaStreamsVersion"
     implementation group: 'io.projectreactor.kafka', name: 'reactor-kafka', version: "$reactorKafkaVersion"
 
-    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: "$springBootVersion"
-    testCompile group: 'org.springframework.kafka', name: 'spring-kafka-test', version: "$springEmbeddedKafkaVersion"
+    testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: "$springBootVersion"
+    testImplementation group: 'org.springframework.kafka', name: 'spring-kafka-test', version: "$springEmbeddedKafkaVersion"
+    testImplementation group: 'org.apache.kafka', name: 'kafka-streams-test-utils', version: "$kafkaStreamsVersion"
 
-    testCompile group: 'org.spockframework', name: 'spock-core', version: "$spockVersion"
-    testCompile group: 'org.spockframework', name: 'spock-spring', version: "$spockVersion"
-    testCompile group: 'org.codehaus.groovy', name: 'groovy-all', version: "$groovyVersion"
+    testImplementation group: 'org.spockframework', name: 'spock-core', version: "$spockVersion"
+    testImplementation group: 'org.spockframework', name: 'spock-spring', version: "$spockVersion"
+    testImplementation group: 'org.codehaus.groovy', name: 'groovy-all', version: "$groovyVersion"
 }

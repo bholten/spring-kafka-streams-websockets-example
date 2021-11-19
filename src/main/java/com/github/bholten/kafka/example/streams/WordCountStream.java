@@ -5,6 +5,7 @@ import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.StreamsBuilder;
+import org.apache.kafka.streams.Topology;
 import org.apache.kafka.streams.kstream.KStream;
 import org.apache.kafka.streams.kstream.KTable;
 import org.apache.kafka.streams.kstream.Materialized;
@@ -25,7 +26,10 @@ public class WordCountStream {
         this.streamsProperties = streamsProperties;
     }
 
-    public KafkaStreams createStream() {
+    // It is better to build the topology in a separate step.
+    // This allows you to use the TopologyTestDriver to test the streams topology
+    // instead of having to fuss with the embedded Kafka driver.
+    public Topology createTopology() {
         final Serde<String> keySerde = Serdes.String();
         final Serde<Long> valueSerde = Serdes.Long();
 
@@ -49,6 +53,10 @@ public class WordCountStream {
         wordCounts.toStream().to(appProperties.getStreams().getOutputTopics(),
                 Produced.with(keySerde, valueSerde));
 
-        return new KafkaStreams(builder.build(), streamsProperties);
+        return builder.build();
+    }
+
+    public KafkaStreams createStream() {
+        return new KafkaStreams(createTopology(), streamsProperties);
     }
 }
