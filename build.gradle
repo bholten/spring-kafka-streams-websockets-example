@@ -16,6 +16,7 @@ dependencies {
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter', version: "$springBootVersion"
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-integration', version: "$springBootVersion"
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-webflux', version: "$springBootVersion"
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: "$springBootVersion"
 
     implementation group: 'org.apache.kafka', name: 'kafka-streams', version: "$kafkaStreamsVersion"
     implementation group: 'io.projectreactor.kafka', name: 'reactor-kafka', version: "$reactorKafkaVersion"

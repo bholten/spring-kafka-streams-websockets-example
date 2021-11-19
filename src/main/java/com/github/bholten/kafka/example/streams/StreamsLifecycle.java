@@ -3,7 +3,7 @@ package com.github.bholten.kafka.example.streams;
 import org.apache.kafka.streams.KafkaStreams;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -16,6 +16,10 @@ public class StreamsLifecycle {
 
     public StreamsLifecycle(WordCountStream wordCountStream) {
         this.wordCountStream = wordCountStream;
+    }
+
+    public Boolean isHealthy() {
+        return streams != null && streams.state().isRunningOrRebalancing();
     }
 
     @PostConstruct
